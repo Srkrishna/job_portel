@@ -1,0 +1,1 @@
+json.partial! "education_qualifications/education_qualification", education_qualification: @education_qualification

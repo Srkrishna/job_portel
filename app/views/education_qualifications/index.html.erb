@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Education Qualifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Intitution name</th>
+      <th>Passed out</th>
+      <th>Percentage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @education_qualifications.each do |education_qualification| %>
+      <tr>
+        <td><%= education_qualification.member_id %></td>
+        <td><%= education_qualification.intitution_name %></td>
+        <td><%= education_qualification.passed_out %></td>
+        <td><%= education_qualification.percentage %></td>
+        <td><%= link_to 'Show', education_qualification %></td>
+        <td><%= link_to 'Edit', edit_education_qualification_path(education_qualification) %></td>
+        <td><%= link_to 'Destroy', education_qualification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Education Qualification', new_education_qualification_path %>

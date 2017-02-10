@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @education_qualification.member_id %>
+</p>
+
+<p>
+  <strong>Intitution name:</strong>
+  <%= @education_qualification.intitution_name %>
+</p>
+
+<p>
+  <strong>Passed out:</strong>
+  <%= @education_qualification.passed_out %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @education_qualification.percentage %>
+</p>
+
+<%= link_to 'Edit', edit_education_qualification_path(@education_qualification) %> |
+<%= link_to 'Back', education_qualifications_path %>

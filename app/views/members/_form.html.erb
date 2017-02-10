@@ -1,0 +1,90 @@
+<%= form_for(member) do |f| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address1 %>
+    <%= f.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address2 %>
+    <%= f.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+    <% if f.object.photo? %>
+      <%= image_tag f.object.photo.thumb.url %>
+      <%= f.label :remove_photo %>
+      <%= f.check_box :remove_photo %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :resume %>
+    <%= f.file_field :resume%>
+    <% if f.object.photo? %>
+        <%= f.object.resume.url%>
+    <%end%>
+  </div>
+
+  <div class="field">
+    <%= f.label :locations %>
+    <%= f.text_field :locations %>
+  </div>
+
+  <div class="field">
+    <%= f.label :links %>
+    <%= f.text_field :links %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :father_name %>
+    <%= f.text_field :father_name %>
+  </div>
+  <div class="field">
+    <%= f.label "Has Company" %>
+    <%= f.check_box :father_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

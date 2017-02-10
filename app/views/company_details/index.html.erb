@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Company Details</h1>
+<h6>Click 'Show' to see jobs you have posted!</h6>
+<%= link_to 'New Company Detail', new_company_detail_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Keyword</th>
+      <th>Description</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company_details.each do |company_detail| %>
+      <tr>
+        <td><%= company_detail.name %></td>
+        <td><%= company_detail.address %></td>
+        <td><%= company_detail.keyword %></td>
+        <td><%= company_detail.description %></td>
+        <td><%= company_detail.url %></td>
+        <td><%= link_to 'Show', company_detail %></td>
+        <td><%= link_to 'Edit', edit_company_detail_path(company_detail) %></td>
+        <td><%= link_to 'Destroy', company_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

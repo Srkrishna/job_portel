@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Emp:</strong>
+  <%= @requested_job.emp_id %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @requested_job.job_id %>
+</p>
+
+<%= link_to 'Edit', edit_requested_job_path(@requested_job) %> |
+<%= link_to 'Back', requested_jobs_path %>

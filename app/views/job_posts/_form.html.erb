@@ -1,0 +1,44 @@
+<%= form_for(job_post) do |f| %>
+  <% if job_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job_post.errors.count, "error") %> prohibited this job_post from being saved:</h2>
+
+      <ul>
+      <% job_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :company_id %>
+    <%#= f.number_field :company_id %>
+    <%= select :job_post, :company_id, @company.map { |c| [c.name, c.id] },{:prompt => "select"} %>
+  </div>
+
+  <div class="field">
+    <%member=Member.find_by_user_id(current_user.id)%>
+    <% f.label :member_id %>
+    <%= f.hidden_field :member_id,:value=> member.id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :required_on %>
+    <%= f.text_field :required_on %>
+  </div>
+
+  <div class="field">
+    <%= f.label :etc %>
+    <%= f.number_field :etc %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_for(education_qualification) do |f| %>
+  <% if education_qualification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(education_qualification.errors.count, "error") %> prohibited this education_qualification from being saved:</h2>
+
+      <ul>
+      <% education_qualification.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%member=Member.find_by_user_id(current_user.id)%>
+    <% f.label :member_id %>
+    <%= f.hidden_field :member_id,:value=> member.id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :intitution_name %>
+    <%= f.text_field :intitution_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passed_out %>
+    <%= f.text_field :passed_out %>
+  </div>
+
+  <div class="field">
+    <%= f.label :percentage %>
+    <%= f.number_field :percentage %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

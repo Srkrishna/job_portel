@@ -1,0 +1,1 @@
+json.array! @education_qualifications, partial: 'education_qualifications/education_qualification', as: :education_qualification

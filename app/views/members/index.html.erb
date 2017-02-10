@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+<div class="nav-bar">
+<%= link_to 'Manage Password',edit_user_registration_path, :class => 'navbar-link-pass' %>
+</div>
+<% @members.each do |member| %>
+    <div  class="avatar">
+      <%= image_tag(member.photo.url.to_s) %>
+    </div>
+      <p>Name: <%= member.name %></p>
+      <p>Address1:  <%= member.address1 %></p>
+      <p>Address2:  <%= member.address2 %></p>
+      <p>Phone  <%= member.phone %></p>
+      <p>Email:     <%= member.email %></p>
+      <p>Role:  <%= member.role %></td></p>
+      <p>Resume : <%= link_to "click here", member.resume_url %></p>
+      <p>Location: <%= member.locations %></p>
+      <p>Link: <%= member.links %></p>
+      <p>Description: <%= member.description %></p>
+      <p>Father Name<%= member.father_name %></p>
+        <%= link_to "<button>Edit</button>".html_safe, edit_member_path(member) %></td>
+        <%= link_to "<button>Destroy</button>".html_safe, member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <% end %>
+
+<%= link_to 'Add Education Qualification', "education_qualifications/new" %>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Intitution name</th>
+      <th>Passed out</th>
+      <th>Percentage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @education_qualifications.each do |education_qualification| %>
+      <tr>
+        <td><%= education_qualification.member_id %></td>
+        <td><%= education_qualification.intitution_name %></td>
+        <td><%= education_qualification.passed_out %></td>
+        <td><%= education_qualification.percentage %></td>
+        <td><%= link_to "<button>Show</button>".html_safe, education_qualification %></td>
+        <td><%= link_to "<button>Edit</button>".html_safe, edit_education_qualification_path(education_qualification) %></td>
+        <td><%= link_to "<button>Destroy</button>".html_safe, education_qualification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Experice', "experiences/new" %>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Company name</th>
+      <th>Worked as</th>
+      <th>Description</th>
+      <th>Experience</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @experiences.each do |experience| %>
+      <tr>
+        <td><%= experience.member_id %></td>
+        <td><%= experience.company_name %></td>
+        <td><%= experience.worked_as %></td>
+        <td><%= experience.description %></td>
+        <td><%= experience.experience %></td>
+        <td><%= link_to "<button>Show</button>".html_safe, experience %></td>
+        <td><%= link_to "<button>Edit</button>".html_safe, edit_experience_path(experience) %></td>
+        <td><%= link_to "<button>Destroy</button>".html_safe, experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

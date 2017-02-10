@@ -1,0 +1,1 @@
+json.partial! "requested_jobs/requested_job", requested_job: @requested_job

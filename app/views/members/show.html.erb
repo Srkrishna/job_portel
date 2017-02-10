@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @member.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @member.address2 %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @member.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @member.email %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @member.photo %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @member.role %>
+</p>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @member.resume %>
+</p>
+
+<p>
+  <strong>Locations:</strong>
+  <%= @member.locations %>
+</p>
+
+<p>
+  <strong>Links:</strong>
+  <%= @member.links %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @member.description %>
+</p>
+
+<p>
+  <strong>Father name:</strong>
+  <%= @member.father_name %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', '/members/index' %>

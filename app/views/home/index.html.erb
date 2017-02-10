@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<title>Job</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,	h1,	h2,	h3,	h4,	h5 {
+	font-family: "Raleway", sans-serif
+}
+</style>
+<body class="w3-light-grey">
+
+	<div class="w3-content" style="max-width:1400px">
+		<!-- Header -->
+		<header class="w3-container w3-center w3-padding-32">
+			<h1><b>HAVE A GREATE DAY! </b></h1>
+			<p>Welcome to the Job Portel by <span class="w3-tag">Radha krishnan</span></p>
+			<p>Edit Profile to see "Job Feeds" (if feeds are not visible)</p>
+			<div class="button">
+				<%= link_to "<button>Post Job</button>".html_safe,:controller=>"job_posts",:action=>"new" %>
+			</header>
+
+			<!-- Grid -->
+			<div class="w3-row">
+				<!-- Blog entries -->
+				<%= link_to 'Company Details','/company_details', :class => 'navbar-link-pass' %>
+
+				<div class="w3-col l8 s12">
+					<%unless @job_posts == nil%>
+						<%@job_posts.each do |job|%>
+					<!-- Blog entry -->
+							<div class="w3-card-4 w3-margin w3-white">
+						<%if user_signed_in?%>
+							<%member_tmp=Member.find_by_user_id(current_user.id)%>
+							<%unless member_tmp == nil%>
+							<% if RequestedJob.find_by_emp_id_and_job_id(member_tmp.id,job.id) == nil%>
+								<div class="w3-container w3-padding-8">
+								<%@company_details=CompanyDetail.find(job.company_id)%>
+								<h3><b><%= @company_details.name%></b></h3>
+								<h5><%= @company_details.description%>, <span class="w3-opacity"><%= job.created_at%></span>,<span class="w3-opacity"><%= @company_details.url%></span></h5>
+							</div>
+								<div class="w3-container">
+								<h5><b><%= "Requoried For:"%><span class="w3-opacity"><%= job.required_on%></span></b></h5>
+								<h5><b><%= "ECTC:"%><span class="w3-opacity"><%= job.etc%></span></b></h5>
+								<p><%= job.description%>.</p>
+								<div class="w3-row">
+									<div class="w3-col m8 s12">
+										<%if user_signed_in?%>
+										<p><%= link_to "<button>Apply</button>".html_safe,:controller=>"home", :action=>"create",:emp_id=>@company_details.member_id,:job_id=>job.id,:company_id=>job.company_id %> </p>
+										<%else%>
+										<p><%= link_to "<button>Apply</button>".html_safe, new_user_session_path %></p>
+										<%end%>
+									</div>
+								</div>
+							</div>
+
+							<%end%>
+							<%end%>
+						<%else%>
+							<div class="w3-container w3-padding-8">
+								<%@company_details=CompanyDetail.find(job.company_id)%>
+								<h3><b><%= @company_details.name%></b></h3>
+								<h5><%= @company_details.description%>, <span class="w3-opacity"><%= job.created_at%></span>,<span class="w3-opacity"><%= @company_details.url%></span></h5>
+							</div>
+							<div class="w3-container">
+								<h5><b><%= "Requoried For:"%><span class="w3-opacity"><%= job.required_on%></span></b></h5>
+								<h5><b><%= "ECTC:"%><span class="w3-opacity"><%= job.etc%></span></b></h5>
+								<p><%= job.description%>.</p>
+								<div class="w3-row">
+									<div class="w3-col m8 s12">
+										<%if user_signed_in?%>
+										<p><%= link_to "<button>Apply</button>".html_safe,:controller=>"home", :action=>"create",:emp_id=>@company_details.member_id,:job_id=>job.id,:company_id=>job.company_id %> </p>
+										<%else%>
+										<p><%= link_to "<button>Apply</button>".html_safe, new_user_session_path %></p>
+										<%end%>
+									</div>
+								</div>
+							</div>
+						<%end%>
+					</div>
+						<%end%>
+					<%end%>
+				</div>
+				<!-- Introduction menu -->
+				<div class="w3-col l4">
+					<!-- About Card -->
+					<div class="w3-card-2 w3-margin w3-margin-top">
+						<div class="w3-container w3-white">
+							<h4><b>Radha Krishnan</b></h4>
+							<p>Just me, myself and I,You Can See <%= link_to "My profile","https://srkrishna.github.io/"%></p>
+						</div>
+					</div>
+					<hr>
+
+					<!-- Posts -->
+					<div class="w3-card-2 w3-margin">
+						<div class="w3-container w3-padding">
+							<h4><b>(Dummy Content)</b></h4>
+							<h4>Popular Posts</h4>
+						</div>
+						<ul class="w3-ul w3-hoverable w3-white">
+							<li class="w3-padding-16">
+								<span class="w3-large">Lorem</span><br>
+								<span>Sed mattis nunc</span>
+							</li>
+							<li class="w3-padding-16">
+								<span class="w3-large">Ipsum</span><br>
+								<span>Praes tinci sed</span>
+							</li>
+							<li class="w3-padding-16">
+								<span class="w3-large">Dorum</span><br>
+								<span>Ultricies congue</span>
+							</li>
+							<li class="w3-padding-16 w3-hide-medium w3-hide-small">
+								<span class="w3-large">Mingsum</span><br>
+								<span>Lorem ipsum dipsum</span>
+							</li>
+						</ul>
+					</div>
+					<hr>
+				</div>
+
+				<!-- END GRID -->
+			</div><br>
+
+			<!-- END w3-content -->
+		</div>
+
+		<!-- Footer -->
+		<footer class="w3-container w3-padding-32 w3-margin-top">
+			<p>Powered by <a href="#" target="_blank">Jeninus </a></p>
+		</footer>
+
+	</body>
+
+	</html>

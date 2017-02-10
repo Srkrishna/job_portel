@@ -1,0 +1,1 @@
+json.array! @requested_jobs, partial: 'requested_jobs/requested_job', as: :requested_job

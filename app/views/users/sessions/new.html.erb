@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+      <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="login-page">
+  <div class="form">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),:class=>'register-form') do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus:true,autocomplete: "off" ,:placeholder=>"name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off",:placeholder=>"email address" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+
+  </div>
+</div>
+
+
+</body>
+</html>
