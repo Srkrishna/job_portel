@@ -8,6 +8,7 @@ class CompanyDetailsController < ApplicationController
     if Member.find_by_user_id(current_user.id) != nil
       me=Member.find_by_user_id(current_user.id)
       @company_details = CompanyDetail.where(:member_id=>me.id)
+      @requested_job = RequestedJobs.where(:company_id => @company_details.id , :emp_id=> me.id)
     else
       redirect_to "/members/new"
     end
